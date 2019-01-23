@@ -65,6 +65,7 @@ class Recipe
     return recipe
   end
 
+=begin
   def Recipe.find_by_id(id)
     db = PG.connect( {dbname: 'recipe_collection', host: 'localhost'})
     sql = "SELECT * from recipes WHERE id = $1"
@@ -75,18 +76,20 @@ class Recipe
     result = Recipe.new(results_array.first)
     return result
   end
+=end
 
-  #def Recipe.find_by_ingredient(ingredients)
-  #  db = PG.connect( { dbname: 'recipe_collection', host: 'localhost'})
-  #  sql = "SELECT * from recipes WHERE ingredients LIKE $1"
-  #  values = [ingredients]
-  #  db.prepare("find_by_ingredient", sql)
-  #  results_array = db.exec_prepared("find_by_ingredient", values)
-  #  db.close()
-  #  recipe_hash = results_array[0]
-  #  recipe = Recipe.new(recipe_hash)
-  #  return recipe
-  #end
+  def Recipe.find_by_ingredient(ingredients)
+    db = PG.connect( { dbname: 'recipe_collection', host: 'localhost'})
+    sql = "SELECT * from recipes WHERE ingredients LIKE $1"
+    values = [ingredients]
+    db.prepare("find_by_ingredient", sql)
+    results_array = db.exec_prepared("find_by_ingredient", values)
+    db.close()
+    recipe_hash = results_array[0]
+    recipe = Recipe.new(recipe_hash)
+    return recipe
+  end
+
 
   def Recipe.delete_all()
     db = PG.connect( {dbname: 'recipe_collection', host: 'localhost'} )

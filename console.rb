@@ -9,11 +9,12 @@ get '/'  do
   erb :home
 end
 
+=begin
 get '/:id' do
   @recipes = Recipe.find_by_id( params[:id] )
   erb( :show)
 end
-
+=end
 get '/new' do
   erb :new
 end
