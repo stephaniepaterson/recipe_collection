@@ -65,7 +65,7 @@ class Recipe
     return recipe
   end
 
-=begin
+
   def Recipe.find_by_id(id)
     db = PG.connect( {dbname: 'recipe_collection', host: 'localhost'})
     sql = "SELECT * from recipes WHERE id = $1"
@@ -76,7 +76,7 @@ class Recipe
     result = Recipe.new(results_array.first)
     return result
   end
-=end
+
 
   def Recipe.find_by_ingredient(ingredients)
     db = PG.connect( { dbname: 'recipe_collection', host: 'localhost'})

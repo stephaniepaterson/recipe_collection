@@ -1,8 +1,12 @@
 body {
-  background-color: red;
+  background-color: White;
 }
 
 p {
+  color: black;
+}
+
+h1 {
   color: blue;
 }
 
